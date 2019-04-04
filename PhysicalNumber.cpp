@@ -44,11 +44,11 @@
        
        PhysicalNumber PhysicalNumber::operator-() const
        {
-           return *this;
+           return PhysicalNumber(-num,unit);
        }
        PhysicalNumber PhysicalNumber::operator+() const
        {
-           return *this;
+           return PhysicalNumber(num,unit);
        }
 
     //    const PhysicalNumber& PhysicalNumber::operator=(const PhysicalNumber& other) 
@@ -56,6 +56,8 @@
     //        //add delete to .cpp
     //        return other;
     //    }
+
+    
        const PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other)
        {
            return other;
