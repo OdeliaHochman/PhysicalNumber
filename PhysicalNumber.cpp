@@ -51,11 +51,11 @@
            return *this;
        }
 
-       const PhysicalNumber& PhysicalNumber::operator=(const PhysicalNumber& other) 
-       {
-           //add delete to .cpp
-           return other;
-       }
+    //    const PhysicalNumber& PhysicalNumber::operator=(const PhysicalNumber& other) 
+    //    {
+    //        //add delete to .cpp
+    //        return other;
+    //    }
        const PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other)
        {
            return other;

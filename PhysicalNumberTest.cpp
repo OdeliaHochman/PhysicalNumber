@@ -62,12 +62,12 @@ int main() {
 
     // YOUR TESTS - INSERT AS MANY AS YOU WANT
 
-  .setname("Basic output")
+  .setname("Basic output- km,m,cm")
   .CHECK_OUTPUT(e, "3.2[km]")
   .CHECK_OUTPUT(f, "80[m]")
   .CHECK_OUTPUT(g, "20[cm]")
  
-  .setname("Compatible dimensions")
+  .setname("Compatible dimensions- km,m,cm")
   .CHECK_OUTPUT(-e,"-3.2[km]")
   .CHECK_OUTPUT(-f, "-80[m]")
   .CHECK_OUTPUT(-g, "-20[cm]")
@@ -80,6 +80,7 @@ int main() {
   .CHECK_OUTPUT(e--,"3.2[km]")
   .CHECK_OUTPUT(f--, "80[m]")
   .CHECK_OUTPUT(g--, "20[cm]")
+
   .CHECK_OUTPUT(f+g,"80.2[m]")
   .CHECK_OUTPUT(g+f,"8020[cm]")
   .CHECK_OUTPUT(e+f,"3.28[km]")
@@ -88,14 +89,11 @@ int main() {
   .CHECK_OUTPUT(e+g,"3.2002[km]")
   .CHECK_OUTPUT(f-g,"79.8[m]")
   .CHECK_OUTPUT(e-f,"3.12[km]")
-  
-  .setname("Incompatible dimensions")        ////////////////////////////////////////////////////////////change!
-  .CHECK_THROWS(g-f)
-  .CHECK_THROWS(f-e)
-  .CHECK_THROWS(g-e)
-
-  .setname("Compatible dimensions")
+  .CHECK_OUTPUT(g-f,"-7980[cm]")
+  .CHECK_OUTPUT(f-e,"-3120[m]")
+  .CHECK_OUTPUT(g-e,"-319980[cm]")
   .CHECK_OUTPUT(e-g,"3.1998[km]")
+
   .CHECK_OUTPUT((e+=f),"3.28[km]")  //--> e=3.28 km
   .CHECK_OUTPUT(e,"3.28[km]")
   .CHECK_OUTPUT(e+e,"6.56[km]")
@@ -116,7 +114,7 @@ int main() {
   
 
 
-  .setname("Incompatible dimensions")
+  .setname("Incompatible dimensions- km,m,cm")
   .CHECK_THROWS(e+h)
   .CHECK_THROWS(e+i)
   .CHECK_THROWS(e+j)
@@ -138,12 +136,12 @@ int main() {
 
 
 
-  .setname("Basic output")
+  .setname("Basic output- hour,min,sec")
   .CHECK_OUTPUT(h, "90[sec]")
   .CHECK_OUTPUT(i, "40[min]")
   .CHECK_OUTPUT(j, "1[hour]")
 
-  .setname("Compatible dimensions")
+  .setname("Compatible dimensions- hour,min,sec")
   .CHECK_OUTPUT(-h, "-90[sec]")
   .CHECK_OUTPUT(-i, "-40[min]")
   .CHECK_OUTPUT(-j, "-1[hour]")
@@ -156,22 +154,22 @@ int main() {
   .CHECK_OUTPUT(h--, "90[sec]")
   .CHECK_OUTPUT(i--, "40[min]")
   .CHECK_OUTPUT(j--, "1[hour]")
+
   .CHECK_OUTPUT(h+i,"2490[sec]") 
   .CHECK_OUTPUT(i+h,"41.5[min]")
   .CHECK_OUTPUT(h+j,"3690[sec]") 
   .CHECK_OUTPUT(j+h,"1.02500[hour]")
   .CHECK_OUTPUT(i+j,"100[min]")
-  .CHECK_OUTPUT(j+i,"1.66666667[hour]") //??
+  .CHECK_OUTPUT(j+i,"1.66666667[hour]") 
   .CHECK_OUTPUT(i-h,"38.5[min]")
-  .CHECK_OUTPUT(j-h,"58.5[min]")//////////////////////////////////////////////////?? hour-90 sec
- 
-  .setname("Incompatible dimensions")  /////////////////////////////////////////////////////change!
-  .CHECK_THROWS(h-i) 
-  .CHECK_THROWS(h-j) 
-  .CHECK_THROWS(i-j)
+  .CHECK_OUTPUT(j-h,"0.975[hour]")////////////////////////////////////////?? hour-90 sec
+ //.CHECK_OUTPUT(j-h,"58.5[min]")/////////////////////////////////////////?? hour-90 sec
+  .CHECK_OUTPUT(h-i,"-2310[sec]") 
+  .CHECK_OUTPUT(h-j,"-3510[sec]") 
+  .CHECK_OUTPUT(i-j,"-20[min]")
+  .CHECK_OUTPUT(j-i,"0.333333333[hour]") //////////////////////////////////?? hour-40 min
+ // .CHECK_OUTPUT(j-i,"20[min]")        //////////////////////////////////?? hour-40 min
 
-  .setname("Compatible dimensions")
-  .CHECK_OUTPUT(j-i,"20[min]") ////////////////////////////////////////////////////////////?? hour-40 min
   .CHECK_OUTPUT((i+=j),"100[min]") // --> i=100 min
   .CHECK_OUTPUT(i,"100[min]")
   .CHECK_OUTPUT(i+i,"200[min]")
@@ -188,7 +186,7 @@ int main() {
   .CHECK_EQUAL(i>=j,true)
 
 
-  .setname("Incompatible dimensions")
+  .setname("Incompatible dimensions- hour,min,sec")
   .CHECK_THROWS(h+k)
   .CHECK_THROWS(h+l)
   .CHECK_THROWS(h+m)
@@ -201,14 +199,12 @@ int main() {
 
 
 
-
-
- .setname("Basic output")
+ .setname("Basic output-ton,kg,g")
   .CHECK_OUTPUT(k, "100[g]")
   .CHECK_OUTPUT(l, "5.3[kg]")
   .CHECK_OUTPUT(m, "7[ton]")
 
-  .setname("Compatible dimensions")
+  .setname("Compatible dimensions-ton,kg,g")
   .CHECK_OUTPUT(-k, "-100[g]")
   .CHECK_OUTPUT(-l, "-5.3[kg]")
   .CHECK_OUTPUT(-m, "-7[ton]")
@@ -230,14 +226,11 @@ int main() {
   .CHECK_OUTPUT(m+l,"7.0053[ton]")
   .CHECK_OUTPUT(l-k,"5.2[kg]")
   .CHECK_OUTPUT(m-k,"6.9999[ton]")
- 
-  .setname("Incompatible dimensions")    ///////////////////////////////////////////////////////////////////////////////////////////////change!
-  .CHECK_THROWS(k-l)
-  .CHECK_THROWS(k-m)
-  .CHECK_THROWS(l-m)
-
-  .setname("Compatible dimensions")
+  .CHECK_OUTPUT(k-l,"-5200[g]")
+  .CHECK_OUTPUT(k-m,"-6999900[g]")
+  .CHECK_OUTPUT(l-m,"-6994.7[kg]")
   .CHECK_OUTPUT(m-l,"6.9947[ton]")
+
   .CHECK_OUTPUT((l+=k),"5.4[kg]")  // --> l=5.4 kg
   .CHECK_OUTPUT(l,"5.4[kg]")
   .CHECK_OUTPUT(l+l,"10.8[kg]")
@@ -266,24 +259,9 @@ int main() {
   .CHECK_OUTPUT((k += PhysicalNumber(20, Unit::CM)), "5.2[m]")
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////??
+
   .setname("check conversions")       
-/*  .CHECK_OK((PhysicalNumber(1, Unit::HOUR))==(PhysicalNumber(60, Unit::MIN)))  
-  .CHECK_OK((PhysicalNumber(3600, Unit::SEC))==(PhysicalNumber(60, Unit::MIN)))
-  .CHECK_OK((PhysicalNumber(1, Unit::HOUR))==(PhysicalNumber(3600, Unit::SEC)))
-  .CHECK_OK((PhysicalNumber(1, Unit::MIN))==(PhysicalNumber(60, Unit::SEC)))
 
-  .CHECK_OK((PhysicalNumber(1, Unit::M))==(PhysicalNumber(100, Unit::CM)))
-  .CHECK_OK((PhysicalNumber(1, Unit::KM))==(PhysicalNumber(1000, Unit::M)))
-  .CHECK_OK((PhysicalNumber(1, Unit::KM))==(PhysicalNumber(100000, Unit::CM)))
-  .CHECK_OK((PhysicalNumber(1000, Unit::M))==(PhysicalNumber(100000, Unit::CM)))
-
-  .CHECK_OK((PhysicalNumber(1, Unit::KG))==(PhysicalNumber(1000, Unit::G)))
-  .CHECK_OK((PhysicalNumber(1, Unit::TON))==(PhysicalNumber(1000, Unit::KG)))
-  .CHECK_OK((PhysicalNumber(1, Unit::TON))==(PhysicalNumber(1000000, Unit::G)))
-  .CHECK_OK((PhysicalNumber(1000, Unit::KG))==(PhysicalNumber(1000000, Unit::G)))
-  */
-  
   .CHECK_EQUAL((PhysicalNumber(1, Unit::HOUR))==(PhysicalNumber(60, Unit::MIN)),true)  
   .CHECK_EQUAL((PhysicalNumber(3600, Unit::SEC))==(PhysicalNumber(60, Unit::MIN)),true)
   .CHECK_EQUAL((PhysicalNumber(1, Unit::HOUR))==(PhysicalNumber(3600, Unit::SEC)),true)
@@ -298,6 +276,12 @@ int main() {
   .CHECK_EQUAL((PhysicalNumber(1, Unit::TON))==(PhysicalNumber(1000, Unit::KG)),true)
   .CHECK_EQUAL((PhysicalNumber(1, Unit::TON))==(PhysicalNumber(1000000, Unit::G)),true)
   .CHECK_EQUAL((PhysicalNumber(1000, Unit::KG))==(PhysicalNumber(1000000, Unit::G)),true)
+
+
+  .CHECK_EQUAL((PhysicalNumber(1000, Unit::KG))!=(PhysicalNumber(100, Unit::G)),true)
+  .CHECK_EQUAL((PhysicalNumber(1, Unit::HOUR))!=(PhysicalNumber(1, Unit::TON)),true)
+  .CHECK_EQUAL((PhysicalNumber(1, Unit::MIN))!=(PhysicalNumber(100000, Unit::CM)),true)
+  .CHECK_EQUAL((PhysicalNumber(1, Unit::M))!=(PhysicalNumber(60, Unit::SEC)),true)
 
 
 
