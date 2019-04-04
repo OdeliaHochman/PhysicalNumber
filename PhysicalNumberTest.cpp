@@ -114,26 +114,54 @@ int main() {
   
 
 
-  .setname("Incompatible dimensions- km,m,cm")
-  .CHECK_THROWS(e+h)
-  .CHECK_THROWS(e+i)
-  .CHECK_THROWS(e+j)
-  .CHECK_THROWS(e+k)
-  .CHECK_THROWS(e+l)
-  .CHECK_THROWS(e+m)
-  .CHECK_THROWS(f+h)
-  .CHECK_THROWS(f+i)
-  .CHECK_THROWS(f+j)
-  .CHECK_THROWS(f+k)
-  .CHECK_THROWS(f+l)
-  .CHECK_THROWS(f+m)
-  .CHECK_THROWS(g+h)
-  .CHECK_THROWS(g+i)
-  .CHECK_THROWS(g+j)
-  .CHECK_THROWS(g+k)
-  .CHECK_THROWS(g+l)
-  .CHECK_THROWS(g+m)
+  .setname("Incompatible dimensions- km,m,cm -- (+,-,+=,-=,<,>,<=,>=)")
+  .CHECK_THROWS(e+h) .CHECK_THROWS(e+i) .CHECK_THROWS(e+j) .CHECK_THROWS(e+k)
+  .CHECK_THROWS(e+l) .CHECK_THROWS(e+m) .CHECK_THROWS(f+h) .CHECK_THROWS(f+i)
+  .CHECK_THROWS(f+j) .CHECK_THROWS(f+k) .CHECK_THROWS(f+l) .CHECK_THROWS(f+m)
+  .CHECK_THROWS(g+h) .CHECK_THROWS(g+i) .CHECK_THROWS(g+j) .CHECK_THROWS(g+k) 
+  .CHECK_THROWS(g+l) .CHECK_THROWS(g+m)
+  
+  .CHECK_THROWS(e+=h) .CHECK_THROWS(e+=i) .CHECK_THROWS(e+=j) .CHECK_THROWS(e+=k)
+  .CHECK_THROWS(e+=l) .CHECK_THROWS(e+=m) .CHECK_THROWS(f+=h) .CHECK_THROWS(f+=i) 
+  .CHECK_THROWS(f+=j) .CHECK_THROWS(f+=k) .CHECK_THROWS(f+=l) .CHECK_THROWS(f+=m)
+  .CHECK_THROWS(g+=h) .CHECK_THROWS(g+=i) .CHECK_THROWS(g+=j) .CHECK_THROWS(g+=k)
+  .CHECK_THROWS(g+=l) .CHECK_THROWS(g+=m)
 
+  .CHECK_THROWS(e-h) .CHECK_THROWS(e-i) .CHECK_THROWS(e-j) .CHECK_THROWS(e-k)
+  .CHECK_THROWS(e-l) .CHECK_THROWS(e-m) .CHECK_THROWS(f-h) .CHECK_THROWS(f-i) 
+  .CHECK_THROWS(f-j) .CHECK_THROWS(f-k) .CHECK_THROWS(f-l) .CHECK_THROWS(f-m)
+  .CHECK_THROWS(g-h) .CHECK_THROWS(g-i) .CHECK_THROWS(g-j) .CHECK_THROWS(g-k)
+  .CHECK_THROWS(g-l) .CHECK_THROWS(g-m)
+
+  .CHECK_THROWS(e-=h) .CHECK_THROWS(e-=i) .CHECK_THROWS(e-=j) .CHECK_THROWS(e-=k)
+  .CHECK_THROWS(e-=l) .CHECK_THROWS(e-=m) .CHECK_THROWS(f-=h) .CHECK_THROWS(f-=i) 
+  .CHECK_THROWS(f-=j) .CHECK_THROWS(f-=k) .CHECK_THROWS(f-=l) .CHECK_THROWS(f-=m)
+  .CHECK_THROWS(g-=h) .CHECK_THROWS(g-=i) .CHECK_THROWS(g-=j) .CHECK_THROWS(g-=k)
+  .CHECK_THROWS(g-=l) .CHECK_THROWS(g-=m)
+
+  .CHECK_THROWS(e<h) .CHECK_THROWS(e<i) .CHECK_THROWS(e<j) .CHECK_THROWS(e<k)
+  .CHECK_THROWS(e<l) .CHECK_THROWS(e<m) .CHECK_THROWS(f<h) .CHECK_THROWS(f<i)
+  .CHECK_THROWS(f<j) .CHECK_THROWS(f<k) .CHECK_THROWS(f<l) .CHECK_THROWS(f<m)
+  .CHECK_THROWS(g<h) .CHECK_THROWS(g<i) .CHECK_THROWS(g<j) .CHECK_THROWS(g<k) 
+  .CHECK_THROWS(g<l) .CHECK_THROWS(g<m)
+
+  .CHECK_THROWS(e<=h) .CHECK_THROWS(e<=i) .CHECK_THROWS(e<=j) .CHECK_THROWS(e<=k)
+  .CHECK_THROWS(e<=l) .CHECK_THROWS(e<=m) .CHECK_THROWS(f<=h) .CHECK_THROWS(f<=i)
+  .CHECK_THROWS(f<=j) .CHECK_THROWS(f<=k) .CHECK_THROWS(f<=l) .CHECK_THROWS(f<=m)
+  .CHECK_THROWS(g<=h) .CHECK_THROWS(g<=i) .CHECK_THROWS(g<=j) .CHECK_THROWS(g<=k) 
+  .CHECK_THROWS(g<=l) .CHECK_THROWS(g<=m)
+
+  .CHECK_THROWS(e>=h) .CHECK_THROWS(e>=i) .CHECK_THROWS(e>=j) .CHECK_THROWS(e>=k)
+  .CHECK_THROWS(e>=l) .CHECK_THROWS(e>=m) .CHECK_THROWS(f>=h) .CHECK_THROWS(f>=i)
+  .CHECK_THROWS(f>=j) .CHECK_THROWS(f>=k) .CHECK_THROWS(f>=l) .CHECK_THROWS(f>=m)
+  .CHECK_THROWS(g>=h) .CHECK_THROWS(g>=i) .CHECK_THROWS(g>=j) .CHECK_THROWS(g>=k) 
+  .CHECK_THROWS(g>=l) .CHECK_THROWS(g>=m)
+
+  .CHECK_THROWS(e>h) .CHECK_THROWS(e>i) .CHECK_THROWS(e>j) .CHECK_THROWS(e>k)
+  .CHECK_THROWS(e>l) .CHECK_THROWS(e>m) .CHECK_THROWS(f>h) .CHECK_THROWS(f>i)
+  .CHECK_THROWS(f>j) .CHECK_THROWS(f>k) .CHECK_THROWS(f>l) .CHECK_THROWS(f>m)
+  .CHECK_THROWS(g>h) .CHECK_THROWS(g>i) .CHECK_THROWS(g>j) .CHECK_THROWS(g>k) 
+  .CHECK_THROWS(g>l) .CHECK_THROWS(g>m)
 
 
   .setname("Basic output- hour,min,sec")
@@ -162,13 +190,13 @@ int main() {
   .CHECK_OUTPUT(i+j,"100[min]")
   .CHECK_OUTPUT(j+i,"1.66666667[hour]") 
   .CHECK_OUTPUT(i-h,"38.5[min]")
-  .CHECK_OUTPUT(j-h,"0.975[hour]")////////////////////////////////////////?? hour-90 sec
- //.CHECK_OUTPUT(j-h,"58.5[min]")/////////////////////////////////////////?? hour-90 sec
+  .CHECK_OUTPUT(j-h,"0.975[hour]")////////////////?? hour-90 sec
+
   .CHECK_OUTPUT(h-i,"-2310[sec]") 
   .CHECK_OUTPUT(h-j,"-3510[sec]") 
   .CHECK_OUTPUT(i-j,"-20[min]")
-  .CHECK_OUTPUT(j-i,"0.333333333[hour]") //////////////////////////////////?? hour-40 min
- // .CHECK_OUTPUT(j-i,"20[min]")        //////////////////////////////////?? hour-40 min
+  .CHECK_OUTPUT(j-i,"0.333333333[hour]") ////////?? hour-40 min
+ 
 
   .CHECK_OUTPUT((i+=j),"100[min]") // --> i=100 min
   .CHECK_OUTPUT(i,"100[min]")
@@ -186,16 +214,38 @@ int main() {
   .CHECK_EQUAL(i>=j,true)
 
 
-  .setname("Incompatible dimensions- hour,min,sec")
-  .CHECK_THROWS(h+k)
-  .CHECK_THROWS(h+l)
-  .CHECK_THROWS(h+m)
-  .CHECK_THROWS(i+k)
-  .CHECK_THROWS(i+l)
-  .CHECK_THROWS(i+m)
-  .CHECK_THROWS(j+k)
-  .CHECK_THROWS(j+l)
-  .CHECK_THROWS(j+m)
+  .setname("Incompatible dimensions- hour,min,sec -- (+,-,+=,-=,<,>,<=,>=)")
+  .CHECK_THROWS(h+k) .CHECK_THROWS(h+l) .CHECK_THROWS(h+m)
+  .CHECK_THROWS(i+k) .CHECK_THROWS(i+l) .CHECK_THROWS(i+m)
+  .CHECK_THROWS(j+k) .CHECK_THROWS(j+l) .CHECK_THROWS(j+m)
+
+  .CHECK_THROWS(h+=k) .CHECK_THROWS(h+=l) .CHECK_THROWS(h+=m)
+  .CHECK_THROWS(i+=k) .CHECK_THROWS(i+=l) .CHECK_THROWS(i+=m)
+  .CHECK_THROWS(j+=k) .CHECK_THROWS(j+=l) .CHECK_THROWS(j+=m)
+
+  .CHECK_THROWS(h-k) .CHECK_THROWS(h-l) .CHECK_THROWS(h-m)
+  .CHECK_THROWS(i-k) .CHECK_THROWS(i-l) .CHECK_THROWS(i-m)
+  .CHECK_THROWS(j-k) .CHECK_THROWS(j-l) .CHECK_THROWS(j-m)
+
+  .CHECK_THROWS(h-=k) .CHECK_THROWS(h-=l) .CHECK_THROWS(h-=m)
+  .CHECK_THROWS(i-=k) .CHECK_THROWS(i-=l) .CHECK_THROWS(i-=m)
+  .CHECK_THROWS(j-=k) .CHECK_THROWS(j-=l) .CHECK_THROWS(j-=m)
+
+  .CHECK_THROWS(h<k) .CHECK_THROWS(h<l) .CHECK_THROWS(h<m)
+  .CHECK_THROWS(i<k) .CHECK_THROWS(i<l) .CHECK_THROWS(i<m)
+  .CHECK_THROWS(j<k) .CHECK_THROWS(j<l) .CHECK_THROWS(j<m)
+
+  .CHECK_THROWS(h<=k) .CHECK_THROWS(h<=l) .CHECK_THROWS(h<=m)
+  .CHECK_THROWS(i<=k) .CHECK_THROWS(i<=l) .CHECK_THROWS(i<=m)
+  .CHECK_THROWS(j<=k) .CHECK_THROWS(j<=l) .CHECK_THROWS(j<=m)
+
+  .CHECK_THROWS(h>k) .CHECK_THROWS(h>l) .CHECK_THROWS(h>m)
+  .CHECK_THROWS(i>k) .CHECK_THROWS(i>l) .CHECK_THROWS(i>m)
+  .CHECK_THROWS(j>k) .CHECK_THROWS(j>l) .CHECK_THROWS(j>m)
+
+  .CHECK_THROWS(h>=k) .CHECK_THROWS(h>=l) .CHECK_THROWS(h>=m)
+  .CHECK_THROWS(i>=k) .CHECK_THROWS(i>=l) .CHECK_THROWS(i>=m)
+  .CHECK_THROWS(j>=k) .CHECK_THROWS(j>=l) .CHECK_THROWS(j>=m)
 
 
 
