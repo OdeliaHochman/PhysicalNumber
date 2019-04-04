@@ -71,7 +71,7 @@ int main() {
   .CHECK_OUTPUT(-e,"-3.2[km]")
   .CHECK_OUTPUT(-f, "-80[m]")
   .CHECK_OUTPUT(-g, "-20[cm]")
-  .CHECK_OUTPUT((+e),"3.2[km]")
+  .CHECK_OUTPUT(+e,"3.2[km]")
   .CHECK_OUTPUT(+f, "80[m]")
   .CHECK_OUTPUT(+g, "20[cm]")
   .CHECK_OUTPUT(e++,"4.2[km]")
