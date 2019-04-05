@@ -54,6 +54,8 @@ using std::istream,std::ostream,std::istringstream;
        bool operator >(const  PhysicalNumber&  a)const;
 
 
+      double convert(const PhysicalNumber p1 , const PhysicalNumber p2);
+
 
        friend ostream& operator<<(ostream& os, const PhysicalNumber& p);
        friend istream& operator>>(istream& is, PhysicalNumber& p);
