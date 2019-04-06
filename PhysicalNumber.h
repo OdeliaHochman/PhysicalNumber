@@ -35,7 +35,7 @@ using std::istream,std::ostream,std::istringstream;
        PhysicalNumber operator-() const;
        PhysicalNumber operator+() const;
 
-       const PhysicalNumber& operator=(const PhysicalNumber& other); 
+       //const PhysicalNumber& operator=(const PhysicalNumber& other); 
        const PhysicalNumber& operator+=(const PhysicalNumber& other);
        const PhysicalNumber& operator-=(const PhysicalNumber& other);
 
@@ -53,6 +53,8 @@ using std::istream,std::ostream,std::istringstream;
        bool operator <(const  PhysicalNumber&  a)const;
        bool operator >(const  PhysicalNumber&  a)const;
 
+
+       double convert(const PhysicalNumber &p1 , const PhysicalNumber &p2) const;
 
 
        friend ostream& operator<<(ostream& os, const PhysicalNumber& p);
