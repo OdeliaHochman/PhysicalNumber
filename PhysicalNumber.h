@@ -22,7 +22,7 @@ using std::istream,std::ostream,std::istringstream;
        public:
     //constructors
     PhysicalNumber(double num,Unit unit);
-    ~PhysicalNumber();
+
     double getNum();
     Unit getUnit();
 

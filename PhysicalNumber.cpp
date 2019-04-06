@@ -49,11 +49,18 @@ PhysicalNumber PhysicalNumber::operator+() const
 
 const PhysicalNumber &PhysicalNumber::operator+=(const PhysicalNumber &other)
 {
-    return other;
-}
+
+ double res = convert(*this, other); // if not able to convert - throw exception
+
+   this->num=this->num+res;
+   return *this;
+    }
 const PhysicalNumber &PhysicalNumber::operator-=(const PhysicalNumber &other)
 {
-    return other;
+   double res = convert(*this, other); // if not able to convert - throw exception
+
+   this->num=this->num-res;
+   return *this;
 }
 
 const PhysicalNumber &PhysicalNumber::operator++()
@@ -69,17 +76,15 @@ const PhysicalNumber &PhysicalNumber::operator--()
 
 PhysicalNumber PhysicalNumber::operator++(int)
 {
-    //    PhysicalNumber temp(*this);
-    //   num++;
-    //   return temp;
-    return *this;
+       PhysicalNumber temp(*this);
+      num++;
+      return temp;
 }
 PhysicalNumber PhysicalNumber::operator--(int)
 {
-    //   PhysicalNumber temp(*this);
-    //   num--;
-    //   return temp;
-    return *this;
+      PhysicalNumber temp(*this);
+      num--;
+      return temp;
 }
 
 bool PhysicalNumber::operator==(const PhysicalNumber &a) const
