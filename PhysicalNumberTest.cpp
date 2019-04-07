@@ -176,6 +176,18 @@ int main() {
   .CHECK_THROWS(g>h) .CHECK_THROWS(g>i) .CHECK_THROWS(g>j) .CHECK_THROWS(g>k) 
   .CHECK_THROWS(g>l) .CHECK_THROWS(g>m)
 
+  .CHECK_THROWS(e==h) .CHECK_THROWS(e==i) .CHECK_THROWS(e==j) .CHECK_THROWS(e==k)
+  .CHECK_THROWS(e==l) .CHECK_THROWS(e==m) .CHECK_THROWS(f==h) .CHECK_THROWS(f==i)
+  .CHECK_THROWS(f==j) .CHECK_THROWS(f==k) .CHECK_THROWS(f==l) .CHECK_THROWS(f==m)
+  .CHECK_THROWS(g==h) .CHECK_THROWS(g==i) .CHECK_THROWS(g==j) .CHECK_THROWS(g==k) 
+  .CHECK_THROWS(g==l) .CHECK_THROWS(g==m)
+
+  .CHECK_THROWS(e!=h) .CHECK_THROWS(e!=i) .CHECK_THROWS(e!=j) .CHECK_THROWS(e!=k)
+  .CHECK_THROWS(e!=l) .CHECK_THROWS(e!=m) .CHECK_THROWS(f!=h) .CHECK_THROWS(f!=i)
+  .CHECK_THROWS(f!=j) .CHECK_THROWS(f!=k) .CHECK_THROWS(f!=l) .CHECK_THROWS(f!=m)
+  .CHECK_THROWS(g!=h) .CHECK_THROWS(g!=i) .CHECK_THROWS(g!=j) .CHECK_THROWS(g!=k) 
+  .CHECK_THROWS(g!=l) .CHECK_THROWS(g!=m)
+
 
   .setname("Basic output- hour,min,sec")
   .CHECK_OUTPUT(h, "90[sec]")
@@ -273,6 +285,14 @@ int main() {
   .CHECK_THROWS(i>=k) .CHECK_THROWS(i>=l) .CHECK_THROWS(i>=m)
   .CHECK_THROWS(j>=k) .CHECK_THROWS(j>=l) .CHECK_THROWS(j>=m)
 
+  .CHECK_THROWS(h==k) .CHECK_THROWS(h==l) .CHECK_THROWS(h==m)
+  .CHECK_THROWS(i==k) .CHECK_THROWS(i==l) .CHECK_THROWS(i==m)
+  .CHECK_THROWS(j==k) .CHECK_THROWS(j==l) .CHECK_THROWS(j==m)
+
+  .CHECK_THROWS(h!=k) .CHECK_THROWS(h!=l) .CHECK_THROWS(h!=m)
+  .CHECK_THROWS(i!=k) .CHECK_THROWS(i!=l) .CHECK_THROWS(i!=m)
+  .CHECK_THROWS(j!=k) .CHECK_THROWS(j!=l) .CHECK_THROWS(j!=m)
+
 
 
  .setname("Basic output-ton,kg,g")
@@ -368,9 +388,9 @@ int main() {
 
 
   .CHECK_EQUAL((PhysicalNumber(1000, Unit::KG))!=(PhysicalNumber(100, Unit::G)),true)
-  .CHECK_EQUAL((PhysicalNumber(1, Unit::HOUR))!=(PhysicalNumber(1, Unit::TON)),true)
-  .CHECK_EQUAL((PhysicalNumber(1, Unit::MIN))!=(PhysicalNumber(100000, Unit::CM)),true)
-  .CHECK_EQUAL((PhysicalNumber(1, Unit::M))!=(PhysicalNumber(60, Unit::SEC)),true)
+  .CHECK_EQUAL((PhysicalNumber(1, Unit::HOUR))!=(PhysicalNumber(1, Unit::MIN)),true)
+  .CHECK_EQUAL((PhysicalNumber(23, Unit::M))!=(PhysicalNumber(100000, Unit::CM)),true)
+  .CHECK_EQUAL((PhysicalNumber(1, Unit::TON))!=(PhysicalNumber(60, Unit::G)),true)
 
 
 
