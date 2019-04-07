@@ -343,11 +343,11 @@ double PhysicalNumber::convert(const PhysicalNumber &p1, const PhysicalNumber &p
 
         if (left_unit == Unit::TON) // g to ton
         {
-            res = right_value * 1000000;
+            res = right_value / 1000000;
         }
         else if (left_unit == Unit::KG) // g to kg
         {
-            res = right_value * 1000;
+            res = right_value / 1000;
         }
         else if (left_unit == Unit::G)
         { // g to g

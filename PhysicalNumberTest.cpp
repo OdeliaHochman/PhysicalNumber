@@ -120,10 +120,10 @@ int main() {
   .CHECK_OUTPUT((g-=g),"0[cm]")
   .CHECK_OUTPUT(g,"0[cm]")  //--> g = 0 cm
   .CHECK_OUTPUT(--g, "-1[cm]")   //--> g = -1 cm
-  .CHECK_OUTPUT(+g,"1[cm]")   //--> g = 1 cm
+  .CHECK_OUTPUT(+g,"-1[cm]")   //--> g = -1 cm
   .CHECK_EQUAL(f>g,true)
   .CHECK_EQUAL(e>=g,true)
-  .CHECK_EQUAL(g==PhysicalNumber(1, Unit::CM),true)
+  .CHECK_EQUAL(g==PhysicalNumber(-1, Unit::CM),true)
   
 
 
@@ -239,13 +239,13 @@ int main() {
   .CHECK_OUTPUT((i+=j),"100[min]") // --> i=100 min
   .CHECK_OUTPUT(i,"100[min]")
   .CHECK_OUTPUT(i+i,"200[min]")
-  .CHECK_OUTPUT((j-=h),"58.5[min]")  //--> j=58.5 min
-  .CHECK_OUTPUT(j,"58.5[min]")
+  .CHECK_OUTPUT((j-=h),"0.975[hour]")  //--> j=0.975 hour
+  .CHECK_OUTPUT(j,"0.975[hour]")
   .CHECK_EQUAL(j<i,true)
-  .CHECK_OUTPUT(j-j,"0[min]")
+  .CHECK_OUTPUT(j-j,"0[hour]")
   .CHECK_OUTPUT(i-j,"41.5[min]") 
-  .CHECK_OUTPUT((h+=j),"3690[sec]")  //-->h=3690 sec
-  .CHECK_OUTPUT(h,"3690[sec]") 
+  .CHECK_OUTPUT((h+=j),"3600[sec]")  //-->h=3600 sec
+  .CHECK_OUTPUT(h,"3600[sec]") 
   .CHECK_EQUAL(h>j,true)
   .CHECK_EQUAL(i==PhysicalNumber(100, Unit::MIN),true)
   .CHECK_EQUAL(h<=i,true)
@@ -362,7 +362,7 @@ int main() {
   .CHECK_OUTPUT((e += PhysicalNumber(30, Unit::SEC)), "2.3[min]")
   
   .CHECK_OK(istringstream("30[kg]") >> l)
-  .CHECK_OUTPUT((l += PhysicalNumber(50, Unit::G)), "30.05[kg]")
+  .CHECK_OUTPUT((l += PhysicalNumber(50, Unit::G)), "5.45[kg]")
   
   .CHECK_OK(istringstream("5[m]") >> k)
   .CHECK_OUTPUT((k += PhysicalNumber(20, Unit::CM)), "5.2[m]")
