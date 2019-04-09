@@ -359,10 +359,10 @@ int main() {
 
   .setname("check input")
   .CHECK_OK(istringstream("2[min]") >> e)
-  .CHECK_OUTPUT((e += PhysicalNumber(30, Unit::SEC)), "2.3[min]")
+  .CHECK_OUTPUT((e += PhysicalNumber(30, Unit::SEC)), "2.5[min]")
   
   .CHECK_OK(istringstream("30[kg]") >> l)
-  .CHECK_OUTPUT((l += PhysicalNumber(50, Unit::G)), "5.45[kg]")
+  .CHECK_OUTPUT((l += PhysicalNumber(50, Unit::G)), "30.05[kg]")
   
   .CHECK_OK(istringstream("5[m]") >> k)
   .CHECK_OUTPUT((k += PhysicalNumber(20, Unit::CM)), "5.2[m]")

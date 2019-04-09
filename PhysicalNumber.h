@@ -32,7 +32,7 @@ using std::istream,std::ostream,std::istringstream;
        PhysicalNumber operator-(const PhysicalNumber& other) const ;
 
        
-       PhysicalNumber operator-() const;
+       PhysicalNumber operator-() ;
        PhysicalNumber operator+() const;
 
        //const PhysicalNumber& operator=(const PhysicalNumber& other); 
