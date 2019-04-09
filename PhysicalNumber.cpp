@@ -33,20 +33,14 @@ PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber &other) const
     return PhysicalNumber(this->num - res, this->unit);
 }
 
-PhysicalNumber PhysicalNumber::operator-() 
+PhysicalNumber PhysicalNumber::operator-()
 {
-    return PhysicalNumber(-1 *num, unit);
+    return PhysicalNumber(-1 * num, unit);
 }
 PhysicalNumber PhysicalNumber::operator+() const
 {
     return PhysicalNumber(num, unit);
 }
-
-//    const PhysicalNumber& PhysicalNumber::operator=(const PhysicalNumber& other)
-//    {
-//        //add delete to .cpp
-//        return other;
-//    }
 
 PhysicalNumber &PhysicalNumber::operator+=(const PhysicalNumber &other)
 {
@@ -90,81 +84,55 @@ PhysicalNumber PhysicalNumber::operator--(int)
 
 bool PhysicalNumber::operator==(const PhysicalNumber &a) const
 {
-           
 
     double number = 0;
-    
-        number = convert(*this, a);
-  
+
+    number = convert(*this, a); // if not able to convert - throw exception
+
     if ((this->num) == number)
-    return true;
+        return true;
 
     return false;
 }
 bool PhysicalNumber::operator!=(const PhysicalNumber &a) const
 {
     double number = 0;
-    try
-    {
-        number = convert(*this, a);
-    }
-    catch (string e)
-    {
-        cerr << "Exception: Error in convert" << endl;
-    }
+
+    number = convert(*this, a); // if not able to convert - throw exception
+
     return this->num != number;
 }
 
 bool PhysicalNumber::operator<=(const PhysicalNumber &a) const
 {
     double number = 0;
-    try
-    {
-        number = convert(*this, a);
-    }
-    catch (string e)
-    {
-        cerr << "Exception: Error in convert" << endl;
-    }
+
+    number = convert(*this, a); // if not able to convert - throw exception
+
     return this->num <= number;
 }
 bool PhysicalNumber::operator>=(const PhysicalNumber &a) const
 {
     double number = 0;
-    try
-    {
-        number = convert(*this, a);
-    }
-    catch (string e)
-    {
-        cerr << "Exception: Error in convert" << endl;
-    }
+
+    number = convert(*this, a); // if not able to convert - throw exception
+
     return this->num >= number;
 }
 bool PhysicalNumber::operator<(const PhysicalNumber &a) const
 {
     double number = 0;
-    try
-    {
-        number = convert(*this, a);
-    }
-    catch (string e)
-    {
-        cerr << "Exception: Error in convert" << endl;
-    }
+
+    number = convert(*this, a); // if not able to convert - throw exception
+
     return this->num < number;
 }
 bool PhysicalNumber::operator>(const PhysicalNumber &a) const
 {
     double number = 0;
-    try
-    {
-        number = convert(*this, a);
-    }
-    catch (string e)
-    {
-        cerr << "Exception: Error in convert" << endl;
-    }
+
+    number = convert(*this, a); // if not able to convert - throw exception
+
     return this->num > number;
 }
 
@@ -375,40 +343,40 @@ ostream &ariel::operator<<(ostream &os, const PhysicalNumber &p)
     {
     case Unit::KM:
     {
-        os  << p.num << "[km]";
+        os << p.num << "[km]";
         break;
     }
 
     case Unit::M:
     {
-        os  << p.num << "[m]";
+        os << p.num << "[m]";
         break;
     }
 
     case Unit::CM:
     {
-        os  << p.num << "[cm]";
+        os << p.num << "[cm]";
         break;
     }
 
     case Unit::MIN:
     {
-        os  << p.num << "[min]";
+        os << p.num << "[min]";
         break;
     }
     case Unit::HOUR:
     {
-        os  << p.num << "[hour]";
+        os << p.num << "[hour]";
         break;
     }
     case Unit::SEC:
     {
-        os  << p.num << "[sec]";
+        os << p.num << "[sec]";
         break;
     }
     case Unit::TON:
     {
-        os  << p.num << "[ton]";
+        os << p.num << "[ton]";
         break;
     }
     case Unit::G:
@@ -418,7 +386,7 @@ ostream &ariel::operator<<(ostream &os, const PhysicalNumber &p)
     }
     case Unit::KG:
     {
-        os  << p.num << "[kg]";
+        os << p.num << "[kg]";
         break;
     }
     }
@@ -437,15 +405,13 @@ istream &ariel::operator>>(istream &is, PhysicalNumber &p)
     double value;
     string typeUnit[9] = {"km", "m", "cm", "hour", "min", "sec", "ton", "kg", "g"};
 
-pos1 = s.find('[');
-pos2 = s.find(']');
-    if ( (pos1  != string::npos) && (pos2  != string::npos)) // if there is [ ]
+    pos1 = s.find('[');
+    pos2 = s.find(']');
+    if ((pos1 != string::npos) && (pos2 != string::npos)) // if there is [ ]
 
     {
-       
 
-
-        unit_s = s.substr(pos1+1, pos2-pos1-1 );
+        unit_s = s.substr(pos1 + 1, pos2 - pos1 - 1);
         bool flag = true;
         for (int i = 0; i < 9; i++)
         {
