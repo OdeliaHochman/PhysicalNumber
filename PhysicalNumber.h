@@ -63,5 +63,7 @@ using std::istream,std::ostream,std::istringstream;
 
    };
 
+       ostream& operator<<(ostream& os, const PhysicalNumber& p);
+       istream& operator>>(istream& is, PhysicalNumber& p);
 
  };
